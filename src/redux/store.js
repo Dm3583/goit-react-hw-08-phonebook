@@ -17,6 +17,7 @@ import {
 import { contactsReducer } from './phonebook/contacts-reducers';
 import { loader } from './loader-reducer';
 import { error } from './error-reducer';
+import { authReducers } from './auth/auth-reducers';
 
 const middleware = [
   ...getDefaultMiddleware({
@@ -30,6 +31,7 @@ const middleware = [
 const store = configureStore({
   reducer: {
     contacts: contactsReducer,
+    auth: authReducers,
     error,
     loader,
   },

@@ -1,5 +1,6 @@
 import { createReducer } from '@reduxjs/toolkit';
 import { contactsActions } from './phonebook';
+import { authActions } from './auth';
 
 const {
   addContactRequest,
@@ -13,14 +14,43 @@ const {
   deleteContactError,
 } = contactsActions;
 
+const {
+  registerUserRequest,
+  registerUserSuccess,
+  registerUserError,
+  loginUserRequest,
+  loginUserSuccess,
+  loginUserError,
+  logoutUserRequest,
+  logoutUserSuccess,
+  logoutUserError,
+  getCurrentUserRequest,
+  getCurrentUserSuccess,
+  getCurrentUserError,
+} = authActions;
+
+const setError = (_, { payload }) => payload;
+
 export const error = createReducer(null, {
   [addContactRequest]: () => null,
   [addContactSuccess]: () => null,
-  [addContactError]: (_, { payload }) => payload,
+  [addContactError]: setError,
   [fetchContactsRequest]: () => null,
   [fetchContactsSuccess]: () => null,
-  [fetchContactsError]: (_, { payload }) => payload,
+  [fetchContactsError]: setError,
   [deleteContactRequest]: () => null,
   [deleteContactSuccess]: () => null,
-  [deleteContactError]: (_, { payload }) => payload,
+  [deleteContactError]: setError,
+  [registerUserRequest]: () => null,
+  [registerUserSuccess]: () => null,
+  [registerUserError]: setError,
+  [loginUserRequest]: () => null,
+  [loginUserSuccess]: () => null,
+  [loginUserError]: setError,
+  [logoutUserRequest]: () => null,
+  [logoutUserSuccess]: () => null,
+  [logoutUserError]: setError,
+  [getCurrentUserRequest]: () => null,
+  [getCurrentUserSuccess]: () => null,
+  [getCurrentUserError]: setError,
 });

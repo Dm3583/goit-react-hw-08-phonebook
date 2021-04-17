@@ -1,5 +1,6 @@
 import { createReducer } from '@reduxjs/toolkit';
 import { contactsActions } from './phonebook';
+import { authActions } from './auth';
 
 const {
   addContactRequest,
@@ -13,6 +14,21 @@ const {
   deleteContactError,
 } = contactsActions;
 
+const {
+  registerUserRequest,
+  registerUserSuccess,
+  registerUserError,
+  loginUserRequest,
+  loginUserSuccess,
+  loginUserError,
+  logoutUserRequest,
+  logoutUserSuccess,
+  logoutUserError,
+  getCurrentUserRequest,
+  getCurrentUserSuccess,
+  getCurrentUserError,
+} = authActions;
+
 export const loader = createReducer(false, {
   [addContactRequest]: () => true,
   [addContactSuccess]: () => false,
@@ -23,4 +39,16 @@ export const loader = createReducer(false, {
   [deleteContactRequest]: () => true,
   [deleteContactSuccess]: () => false,
   [deleteContactError]: () => false,
+  [registerUserRequest]: () => true,
+  [registerUserSuccess]: () => false,
+  [registerUserError]: () => false,
+  [loginUserRequest]: () => true,
+  [loginUserSuccess]: () => false,
+  [loginUserError]: () => false,
+  [logoutUserRequest]: () => true,
+  [logoutUserSuccess]: () => false,
+  [logoutUserError]: () => false,
+  [getCurrentUserRequest]: () => true,
+  [getCurrentUserSuccess]: () => false,
+  [getCurrentUserError]: () => false,
 });
