@@ -14,6 +14,13 @@ const ListItem = ({ contact, deleteContact }) => {
         type="button"
         onClick={() => deleteContact(id)}
       >
+        Update
+      </button>
+      <button
+        className="ListItem__button"
+        type="button"
+        onClick={() => deleteContact(id)}
+      >
         Delete
       </button>
     </li>

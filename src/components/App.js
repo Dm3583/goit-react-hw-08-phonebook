@@ -2,10 +2,6 @@ import React, { lazy, Suspense, Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import { connect } from 'react-redux';
 import AppBar from '../components/AppBar';
-// import ContactsView from '../views/ContactsView';
-// import HomeView from '../views/HomeView';
-// import LoginView from '../views/LoginView';
-// import RegisterView from '../views/RegisterView';
 import { PrivateRoute, PublicRoute } from '../components/Routes';
 import { authOperations } from '../redux/auth';
 

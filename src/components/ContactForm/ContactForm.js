@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { v4 as uuid } from 'uuid';
+// import { v4 as uuid } from 'uuid';
 import PropTypes from 'prop-types';
 import './ContactForm.scss';
 import { contactsOperations, contactsSelectors } from '../../redux/phonebook';
@@ -13,6 +13,8 @@ const INITIAL_STATE = {
 class ContactForm extends Component {
   static propTypes = {
     addContact: PropTypes.func.isRequired,
+
+    buttonLabel: PropTypes.string.isRequired,
   };
 
   state = {
@@ -33,7 +35,7 @@ class ContactForm extends Component {
 
   createContact = (name, number) => {
     return {
-      id: uuid(),
+      // id: uuid(),
       name,
       number,
     };
@@ -66,6 +68,7 @@ class ContactForm extends Component {
   render() {
     const { name, number } = this.state;
     const { handleInput, handleSubmit } = this;
+    const { buttonLabel } = this.props;
 
     return (
       <form onSubmit={handleSubmit} className="ContactForm">
@@ -97,7 +100,7 @@ class ContactForm extends Component {
         </label>
         <div className="ContactForm__btnWrapper">
           <button className="ContactForm__btn" type="submit">
-            Add contact
+            {buttonLabel}
           </button>
         </div>
       </form>
