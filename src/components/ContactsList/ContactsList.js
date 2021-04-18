@@ -4,6 +4,7 @@ import ListItem from './ListItem';
 import PropTypes from 'prop-types';
 import './ContactsList.scss';
 import { contactsOperations, contactsSelectors } from '../../redux/phonebook';
+import { authOperations } from '../../redux/auth';
 
 class ContactsList extends Component {
   componentDidMount() {

@@ -6,10 +6,10 @@ import UserMenu from '../UserMenu';
 import { authSelectors } from '../../redux/auth';
 
 const AppBar = ({ isAuthenticated }) => (
-  <>
+  <nav>
     <Navigation />
     {isAuthenticated ? <UserMenu /> : <AuthNav />}
-  </>
+  </nav>
 );
 
 const mapStateToProps = state => ({

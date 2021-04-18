@@ -16,9 +16,9 @@ const logoutUserSuccess = createAction('auth/logoutUserSuccess');
 const logoutUserError = createAction('auth/logoutUserError');
 
 // Get current user
-const getCurrentUserRequest = createAction('auth/logoutUserRequest');
-const getCurrentUserSuccess = createAction('auth/logoutUserSuccess');
-const getCurrentUserError = createAction('auth/logoutUserError');
+const getCurrentUserRequest = createAction('auth/getCurrentUserRequest');
+const getCurrentUserSuccess = createAction('auth/getCurrentUserSuccess');
+const getCurrentUserError = createAction('auth/getCurrentUserError');
 
 export default {
   registerUserRequest,

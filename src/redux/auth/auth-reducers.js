@@ -18,7 +18,7 @@ const resetUser = { name: null, email: null };
 const user = createReducer(null, {
   [registerUserSuccess]: (_, { payload }) => payload.user,
   [loginUserSuccess]: (_, { payload }) => payload.user,
-  [getCurrentUserSuccess]: (_, { payload }) => payload.user,
+  [getCurrentUserSuccess]: (_, { payload }) => payload,
   [logoutUserSuccess]: () => resetUser,
 });
 

@@ -1,15 +1,12 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { NavLink } from 'react-router-dom';
 import { authSelectors, authOperations } from '../../redux/auth';
 
 const UserMenu = ({ name, logout }) => {
   return (
     <>
       <span>Welcome {name}</span>
-      <NavLink to="/" onClick={logout}>
-        Logout
-      </NavLink>
+      <button onClick={logout}>Logout</button>
     </>
   );
 };
