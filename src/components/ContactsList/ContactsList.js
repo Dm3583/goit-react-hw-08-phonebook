@@ -12,7 +12,14 @@ class ContactsList extends Component {
   }
 
   render() {
-    const { contacts, deleteContact, isLoadingContacts, isError } = this.props;
+    const {
+      contacts,
+      deleteContact,
+      isLoadingContacts,
+      isError,
+      toggleModal,
+      setContactId,
+    } = this.props;
 
     return (
       <>
@@ -22,6 +29,8 @@ class ContactsList extends Component {
               key={contact.id}
               contact={contact}
               deleteContact={deleteContact}
+              toggleModal={toggleModal}
+              setContactId={setContactId}
             />
           ))}
         </ul>

@@ -30,8 +30,21 @@ const deleteContact = contactId => dispatch => {
     .catch(error => dispatch(actions.deleteContactError(error)));
 };
 
+const updateContact = ({ id, contact }) => dispatch => {
+  // console.log('ID: ', id);
+  // console.log('CONTACT: ', contact);
+
+  dispatch(actions.updateContactRequest());
+
+  axios
+    .patch(`/contacts/${id}`, contact)
+    .then(({ data }) => dispatch(actions.updateContactSuccess(data)))
+    .catch(error => dispatch(actions.updateContactError(error.message)));
+};
+
 export default {
   addContact,
   fetchContacts,
   deleteContact,
+  updateContact,
 };

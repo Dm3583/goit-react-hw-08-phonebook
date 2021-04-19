@@ -12,6 +12,9 @@ const {
   deleteContactRequest,
   deleteContactSuccess,
   deleteContactError,
+  updateContactRequest,
+  updateContactSuccess,
+  updateContactError,
 } = contactsActions;
 
 const {
@@ -53,4 +56,7 @@ export const error = createReducer(null, {
   [getCurrentUserRequest]: () => null,
   [getCurrentUserSuccess]: () => null,
   [getCurrentUserError]: setError,
+  [updateContactRequest]: () => null,
+  [updateContactSuccess]: () => null,
+  [updateContactError]: setError,
 });

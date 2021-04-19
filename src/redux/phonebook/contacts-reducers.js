@@ -6,6 +6,7 @@ const {
   changeFilter,
   addContactSuccess,
   fetchContactsSuccess,
+  updateContactSuccess,
   deleteContactSuccess,
 } = actions;
 
@@ -14,6 +15,10 @@ const items = createReducer([], {
   [deleteContactSuccess]: (state, { payload }) =>
     state.filter(({ id }) => id !== payload),
   [fetchContactsSuccess]: (_, { payload }) => payload,
+  [updateContactSuccess]: (state, { payload }) => {
+    console.log('PPPAAAYYYY    ', payload.id);
+    state.map(contact => (contact.id === payload.id ? payload : contact));
+  },
 });
 
 const filter = createReducer('', {

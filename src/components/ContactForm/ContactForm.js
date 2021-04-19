@@ -53,7 +53,16 @@ class ContactForm extends Component {
 
     if (!this.isNameExist(allContacts, name)) {
       const contact = this.createContact(name, number);
-      addContact(contact);
+      if (this.props.updateContact && this.props.toggleModal) {
+        console.log(contact);
+        const id = this.props.getContactId();
+        console.log(id);
+        this.props.updateContact({ id, contact });
+        this.props.fetchContacts();
+        this.props.toggleModal();
+      } else {
+        addContact(contact);
+      }
     } else {
       alert(`${name} is already in contacts`);
     }
@@ -114,6 +123,8 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   addContact: contact => dispatch(contactsOperations.addContact(contact)),
+  updateContact: contact => dispatch(contactsOperations.updateContact(contact)),
+  fetchContacts: () => dispatch(contactsOperations.fetchContacts()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ContactForm);

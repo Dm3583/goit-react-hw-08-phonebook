@@ -20,6 +20,12 @@ const deleteContactRequest = createAction('contacts/deleteContactRequest');
 const deleteContactSuccess = createAction('contacts/deleteContactSuccess');
 const deleteContactError = createAction('contacts/deleteContactError');
 
+// Update contacts
+
+const updateContactRequest = createAction('contacts/updateContactRequest');
+const updateContactSuccess = createAction('contacts/updateContactSuccess');
+const updateContactError = createAction('contacts/updateContactError');
+
 export default {
   changeFilter,
   addContactRequest,
@@ -31,4 +37,7 @@ export default {
   deleteContactRequest,
   deleteContactSuccess,
   deleteContactError,
+  updateContactRequest,
+  updateContactSuccess,
+  updateContactError,
 };
