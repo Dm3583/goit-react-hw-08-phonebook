@@ -10,8 +10,10 @@ const NavBar = () => (
     </NavLink> */}
 
     <Nav className="mr-auto">
-      <Nav.Link href="/login">Login</Nav.Link>
-      <Nav.Link href="/register" exact>
+      <Nav.Link href="/login" exact="true">
+        Login
+      </Nav.Link>
+      <Nav.Link href="/register" exact="true">
         Register
       </Nav.Link>
     </Nav>

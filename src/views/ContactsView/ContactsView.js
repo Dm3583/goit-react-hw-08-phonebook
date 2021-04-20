@@ -3,6 +3,7 @@ import ContactForm from '../../components/ContactForm';
 import Filter from '../../components/Filter';
 import ContactsList from '../../components/ContactsList';
 import Modal from '../../components/Modal';
+import './ContactsView.scss';
 
 class ContactsView extends Component {
   state = {
@@ -15,7 +16,6 @@ class ContactsView extends Component {
   };
 
   setContactId = id => {
-    // console.log('ID: ', id);
     this.setState({ contactId: id });
   };
 
@@ -26,8 +26,8 @@ class ContactsView extends Component {
   render() {
     const { isModalOpen } = this.state;
     return (
-      <>
-        <h1>Phonebook</h1>
+      <div className="Container">
+        <h1 className="Align__header">Phonebook</h1>
         <ContactForm buttonLabel="Add contact" />
         <Filter />
         <h2>Contacts</h2>
@@ -45,7 +45,7 @@ class ContactsView extends Component {
             />
           </Modal>
         )}
-      </>
+      </div>
     );
   }
 }

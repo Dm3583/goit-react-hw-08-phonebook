@@ -1,10 +1,19 @@
 import React, { Component } from 'react';
 import { createPortal } from 'react-dom';
 import './Modal.scss';
+import PropTypes from 'prop-types';
 
 const modalRoot = document.querySelector('#modal-root');
 
 class Modal extends Component {
+  static defaultProps = {
+    children: null,
+  };
+
+  static propTypes = {
+    children: PropTypes.node,
+  };
+
   componentDidMount() {
     window.addEventListener('keydown', this.handleKeyDown);
   }

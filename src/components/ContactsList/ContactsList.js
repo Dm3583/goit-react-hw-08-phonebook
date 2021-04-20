@@ -48,6 +48,11 @@ ContactsList.propTypes = {
     }),
   ),
   deleteContact: PropTypes.func.isRequired,
+  fetchContacts: PropTypes.func.isRequired,
+  toggleModal: PropTypes.func.isRequired,
+  setContactId: PropTypes.func.isRequired,
+  isLoadingContacts: PropTypes.bool.isRequired,
+  isError: PropTypes.bool,
 };
 
 const mapStateToProps = state => ({

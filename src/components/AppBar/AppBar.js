@@ -9,6 +9,7 @@ import { Navbar, Nav } from 'react-bootstrap';
 const AppBar = ({ isAuthenticated }) => (
   <Navbar bg="light" expand="lg">
     <Navbar.Brand href="/">My phone Book</Navbar.Brand>
+    <Navbar.Toggle aria-controls="basic-navbar-nav" />
     <Navbar.Collapse id="basic-navbar-nav">
       <Navigation />
       {isAuthenticated ? <UserMenu /> : <AuthNav />}

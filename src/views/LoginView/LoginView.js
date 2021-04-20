@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { authOperations } from '../../redux/auth';
 import { Button, Form } from 'react-bootstrap';
+import PropTypes from 'prop-types';
+import './LoginView.scss';
 
 const initialState = {
   email: '',
@@ -9,6 +11,10 @@ const initialState = {
 };
 
 class LoginView extends Component {
+  static propTypes = {
+    login: PropTypes.func.isRequired,
+  };
+
   state = {
     email: '',
     password: '',
@@ -21,11 +27,8 @@ class LoginView extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
-    // const {email,password} = this.state;
     const user = { ...this.state };
     this.props.login(user);
-    // console.log('click');
-    // console.log('EMAIL: ',this.state.email,'PASSWORD: ', this.state.password);
     this.setState({ ...initialState });
   };
 
@@ -34,7 +37,7 @@ class LoginView extends Component {
     const { email, password } = this.state;
     return (
       <>
-        <h1>Login</h1>
+        <h1 className="Align__header">Login</h1>
         {/* <form autoComplete="off" onSubmit={handleSubmit}>
           <label>
             <input
@@ -59,7 +62,11 @@ class LoginView extends Component {
           <button type="submit">Submit</button>
         </form> */}
 
-        <Form autoComplete="off" onSubmit={handleSubmit}>
+        <Form
+          autoComplete="off"
+          onSubmit={handleSubmit}
+          className="Form__container"
+        >
           <Form.Group controlId="formBasicEmail">
             <Form.Label>Email address</Form.Label>
             <Form.Control

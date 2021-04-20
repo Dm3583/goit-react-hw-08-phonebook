@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { authOperations } from '../../redux/auth';
 import { Button, Form } from 'react-bootstrap';
+import PropTypes from 'prop-types';
+import './RegisterView.scss';
 
 const initialState = {
   name: '',
@@ -10,6 +12,10 @@ const initialState = {
 };
 
 class RegisterView extends Component {
+  static propTypes = {
+    register: PropTypes.func.isRequired,
+  };
+
   state = {
     ...initialState,
   };
@@ -22,7 +28,7 @@ class RegisterView extends Component {
   handleSubmit = e => {
     e.preventDefault();
     const user = { ...this.state };
-    console.log(user);
+    // console.log(user);
     this.props.register(user);
     this.setState({ ...initialState });
   };
@@ -32,7 +38,7 @@ class RegisterView extends Component {
     const { name, email, password } = this.state;
     return (
       <>
-        <h1>Register</h1>
+        <h1 className="Align__header">Register</h1>
         {/* <form autoComplete="off" onSubmit={handleSubmit}>
           <label>
             <input
@@ -66,9 +72,13 @@ class RegisterView extends Component {
           </label>
           <button type="submit">Submit</button>
         </form> */}
-        <Form autoComplete="off" onSubmit={handleSubmit}>
+        <Form
+          autoComplete="off"
+          onSubmit={handleSubmit}
+          className="Form__container"
+        >
           <Form.Group controlId="Name">
-            <Form.Label>Email address</Form.Label>
+            <Form.Label>Name</Form.Label>
             <Form.Control
               type="text"
               name="name"

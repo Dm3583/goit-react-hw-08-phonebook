@@ -14,8 +14,21 @@ const INITIAL_STATE = {
 class ContactForm extends Component {
   static propTypes = {
     addContact: PropTypes.func.isRequired,
-
     buttonLabel: PropTypes.string.isRequired,
+    allContacts: PropTypes.array,
+
+    updateContact: PropTypes.func,
+    fetchContacts: PropTypes.func,
+    toggleModal: PropTypes.func,
+    getContactId: PropTypes.func,
+  };
+
+  static defaultProps = {
+    allContacts: [],
+    updateContact: null,
+    fetchContacts: null,
+    toggleModal: null,
+    getContactId: null,
   };
 
   state = {

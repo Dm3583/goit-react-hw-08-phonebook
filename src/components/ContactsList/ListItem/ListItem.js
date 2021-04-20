@@ -49,6 +49,8 @@ ListItem.propTypes = {
     number: PropTypes.string.isRequired,
   }),
   deleteContact: PropTypes.func.isRequired,
+  setContactId: PropTypes.func.isRequired,
+  toggleModal: PropTypes.func.isRequired,
 };
 
 export default ListItem;
