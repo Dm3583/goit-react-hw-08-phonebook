@@ -9,10 +9,14 @@
   margin-bottom: 5px;
 }
 
-.ListItem__button {
-  @extend %button;
-  transition: background-color $timing-function 0.25s;
-  &:hover {
-    background-color: $light-gray;
-  }
+// .ListItem__button {
+//   @extend %button;
+//   transition: background-color $timing-function 0.25s;
+//   &:hover {
+//     background-color: $light-gray;
+//   }
+// }
+
+.ListItem__button + .ListItem__button {
+  margin-left: 10px;
 }

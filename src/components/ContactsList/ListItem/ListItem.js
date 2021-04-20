@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import './ListItem.scss';
-import { render } from '@testing-library/react';
+import { Button } from 'react-bootstrap';
 
 class ListItem extends Component {
   updateContactInModal = id => {
@@ -17,22 +17,26 @@ class ListItem extends Component {
         <span>
           {name}: {number}
         </span>
-        <button
-          className="ListItem__button"
-          type="button"
-          onClick={() => {
-            this.updateContactInModal(id);
-          }}
-        >
-          Update
-        </button>
-        <button
-          className="ListItem__button"
-          type="button"
-          onClick={() => deleteContact(id)}
-        >
-          Delete
-        </button>
+        <div>
+          <Button
+            variant="secondary"
+            className="ListItem__button"
+            type="button"
+            onClick={() => {
+              this.updateContactInModal(id);
+            }}
+          >
+            Update
+          </Button>
+          <Button
+            variant="danger"
+            className="ListItem__button"
+            type="button"
+            onClick={() => deleteContact(id)}
+          >
+            Delete
+          </Button>
+        </div>
       </li>
     );
   }

@@ -31,9 +31,6 @@ const deleteContact = contactId => dispatch => {
 };
 
 const updateContact = ({ id, contact }) => dispatch => {
-  // console.log('ID: ', id);
-  // console.log('CONTACT: ', contact);
-
   dispatch(actions.updateContactRequest());
 
   axios

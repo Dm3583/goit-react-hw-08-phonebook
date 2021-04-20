@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import './ContactForm.scss';
 import { contactsOperations, contactsSelectors } from '../../redux/phonebook';
+import { Button } from 'react-bootstrap';
 
 const INITIAL_STATE = {
   name: '',
@@ -20,6 +21,13 @@ class ContactForm extends Component {
   state = {
     ...INITIAL_STATE,
   };
+
+  componentDidMount() {
+    if (this.props.updateContact && this.props.getContactId) {
+      const id = this.props.getContactId();
+      this.getOldContact(id);
+    }
+  }
 
   handleInput = e => {
     const stateField = e.target.name;
@@ -41,6 +49,18 @@ class ContactForm extends Component {
     };
   };
 
+  getOldContact = id => {
+    console.log('getOldContact');
+    this.props.allContacts.find(contact => {
+      if (contact.id === id) {
+        this.setState({
+          name: contact.name,
+          number: contact.number,
+        });
+      }
+    });
+  };
+
   handleSubmit = e => {
     e.preventDefault();
     const { allContacts, addContact } = this.props;
@@ -51,18 +71,15 @@ class ContactForm extends Component {
       return;
     }
 
-    if (!this.isNameExist(allContacts, name)) {
+    if (this.props.updateContact && this.props.toggleModal) {
       const contact = this.createContact(name, number);
-      if (this.props.updateContact && this.props.toggleModal) {
-        console.log(contact);
-        const id = this.props.getContactId();
-        console.log(id);
-        this.props.updateContact({ id, contact });
-        this.props.fetchContacts();
-        this.props.toggleModal();
-      } else {
-        addContact(contact);
-      }
+      const id = this.props.getContactId();
+      this.props.updateContact({ id, contact });
+      this.props.fetchContacts();
+      this.props.toggleModal();
+    } else if (!this.isNameExist(allContacts, name)) {
+      const contact = this.createContact(name, number);
+      addContact(contact);
     } else {
       alert(`${name} is already in contacts`);
     }
@@ -108,9 +125,9 @@ class ContactForm extends Component {
           />
         </label>
         <div className="ContactForm__btnWrapper">
-          <button className="ContactForm__btn" type="submit">
+          <Button type="submit" variant="success">
             {buttonLabel}
-          </button>
+          </Button>
         </div>
       </form>
     );

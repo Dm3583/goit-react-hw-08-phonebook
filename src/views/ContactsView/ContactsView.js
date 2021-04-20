@@ -15,7 +15,7 @@ class ContactsView extends Component {
   };
 
   setContactId = id => {
-    console.log('ID: ', id);
+    // console.log('ID: ', id);
     this.setState({ contactId: id });
   };
 

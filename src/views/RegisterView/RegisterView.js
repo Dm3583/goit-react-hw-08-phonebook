@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { authOperations } from '../../redux/auth';
+import { Button, Form } from 'react-bootstrap';
 
 const initialState = {
   name: '',
@@ -32,7 +33,7 @@ class RegisterView extends Component {
     return (
       <>
         <h1>Register</h1>
-        <form autoComplete="off" onSubmit={handleSubmit}>
+        {/* <form autoComplete="off" onSubmit={handleSubmit}>
           <label>
             <input
               type="text"
@@ -64,7 +65,47 @@ class RegisterView extends Component {
             />
           </label>
           <button type="submit">Submit</button>
-        </form>
+        </form> */}
+        <Form autoComplete="off" onSubmit={handleSubmit}>
+          <Form.Group controlId="Name">
+            <Form.Label>Email address</Form.Label>
+            <Form.Control
+              type="text"
+              name="name"
+              value={name}
+              placeholder="Enter your name"
+              onChange={handleChange}
+              required
+            />
+          </Form.Group>
+
+          <Form.Group controlId="formBasicEmail">
+            <Form.Label>Email address</Form.Label>
+            <Form.Control
+              type="email"
+              name="email"
+              value={email}
+              placeholder="Enter email"
+              onChange={handleChange}
+              required
+            />
+          </Form.Group>
+
+          <Form.Group controlId="formBasicPassword">
+            <Form.Label>Password</Form.Label>
+            <Form.Control
+              type="password"
+              placeholder="Password"
+              name="password"
+              value={password}
+              onChange={handleChange}
+              required
+            />
+          </Form.Group>
+          <Button variant="primary" type="submit">
+            Submit
+          </Button>
+        </Form>
       </>
     );
   }
