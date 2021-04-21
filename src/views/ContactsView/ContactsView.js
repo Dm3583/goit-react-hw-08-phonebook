@@ -27,24 +27,26 @@ class ContactsView extends Component {
     const { isModalOpen } = this.state;
     return (
       <div className="Container">
-        <h1 className="Align__header">Phonebook</h1>
-        <ContactForm buttonLabel="Add contact" />
-        <Filter />
-        <h2>Contacts</h2>
-        <ContactsList
-          toggleModal={this.toggleModal}
-          setContactId={this.setContactId}
-        />
-        {isModalOpen && (
-          <Modal onClose={this.toggleModal}>
-            <ContactForm
-              buttonLabel="Update contact"
-              toggleModal={this.toggleModal}
-              getContactId={this.getContactId}
-              updateContact
-            />
-          </Modal>
-        )}
+        <div className="Content__wrapper">
+          <h1 className="Align__header">Phonebook</h1>
+          <ContactForm buttonLabel="Add contact" />
+          <Filter />
+          <h2 className="Align__header">Contacts</h2>
+          <ContactsList
+            toggleModal={this.toggleModal}
+            setContactId={this.setContactId}
+          />
+          {isModalOpen && (
+            <Modal onClose={this.toggleModal}>
+              <ContactForm
+                buttonLabel="Update contact"
+                toggleModal={this.toggleModal}
+                getContactId={this.getContactId}
+                updateContact
+              />
+            </Modal>
+          )}
+        </div>
       </div>
     );
   }

@@ -10,6 +10,7 @@ const {
   registerUserError,
   loginUserError,
   logoutUserError,
+  getCurrentUserRequest,
   getCurrentUserError,
 } = actions;
 
@@ -39,8 +40,15 @@ const isAuthenticated = createReducer(false, {
   [getCurrentUserError]: () => false,
 });
 
+const isGettingCurrentUser = createReducer(false, {
+  [getCurrentUserRequest]: () => true,
+  [getCurrentUserSuccess]: () => false,
+  [getCurrentUserError]: () => false,
+});
+
 export const authReducers = combineReducers({
   user,
   token,
   isAuthenticated,
+  isGettingCurrentUser,
 });

@@ -18,5 +18,11 @@
 // }
 
 .ListItem__button + .ListItem__button {
-  margin-left: 10px;
+  margin-top: 5px;
+  display: block;
+  @media screen and (min-width: 480px) {
+    display: inline-block;
+    margin-top: 0px;
+    margin-left: 10px;
+  }
 }

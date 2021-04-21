@@ -35,6 +35,7 @@ class LoginView extends Component {
   render() {
     const { handleChange, handleSubmit } = this;
     const { email, password } = this.state;
+    console.log('LOGIN VIEW');
     return (
       <>
         <h1 className="Align__header">Login</h1>

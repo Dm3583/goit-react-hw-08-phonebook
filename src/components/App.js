@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import AppBar from '../components/AppBar';
 import { PrivateRoute, PublicRoute } from '../components/Routes';
 import { authOperations } from '../redux/auth';
+import { authSelectors } from '../redux/auth';
 
 const HomeView = lazy(() =>
   import('../views/HomeView' /* webpackChunkName: "home-page" */),
@@ -37,12 +38,14 @@ class App extends Component {
               redirectTo="/contacts"
               component={RegisterView}
             />
-            <PublicRoute
-              path="/login"
-              restricted
-              redirectTo="/contacts"
-              component={LoginView}
-            />
+            {!this.props.isGettingCurrentUser && (
+              <PublicRoute
+                path="/login"
+                restricted
+                redirectTo="/contacts"
+                component={LoginView}
+              />
+            )}
             <PrivateRoute
               path="/contacts"
               redirectTo="/login"
@@ -55,8 +58,12 @@ class App extends Component {
   }
 }
 
+const mapStateToProps = state => ({
+  isGettingCurrentUser: authSelectors.getIsGettingCurrentUser(state),
+});
+
 const mapDispatchToProps = dispatch => ({
   getCurrentUser: () => dispatch(authOperations.getCurrentUser()),
 });
 
-export default connect(null, mapDispatchToProps)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(App);

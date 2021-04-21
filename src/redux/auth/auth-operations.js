@@ -48,6 +48,7 @@ const logoutUser = () => async dispatch => {
 };
 
 const getCurrentUser = () => async (dispatch, getState) => {
+  console.log('BEGIN OF CURRENT USER');
   const {
     auth: { token: persistedToken },
   } = getState();
@@ -60,6 +61,7 @@ const getCurrentUser = () => async (dispatch, getState) => {
   try {
     const response = await axios.get('/users/current');
     dispatch(actions.getCurrentUserSuccess(response.data));
+    console.log('END OF CURRENT USER');
   } catch (error) {
     dispatch(actions.getCurrentUserError(error.message));
   }
